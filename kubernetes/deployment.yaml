@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: minio
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nfs-exporter
+    spec:
+      containers:
+      - name: nfs-exporter
+        image: quay.io/galexrt/nfs-exporter:latest
+        env:
+        - name: NFS_EXPORTS
+          value: |
+            /data       *(rw,sync,no_root_squash,no_subtree_check)
+        ports:
+        - containerPort: 9000
+        volumeMounts:
+        - name: storage
+          mountPath: "/data"
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: nfs-exporter-1-pv-claim

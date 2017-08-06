@@ -13,10 +13,9 @@ modprobe nfsd || { echo "Failed modprobing 'nfsd' kernel module"; exit 1; }
 
 echo "Initializing NFS Server.."
 rpcbind
-
-
-service nfs-kernel-server start
-
 /usr/sbin/rpc.nfsd "$RPCNFSDOPTS" "$RPCNFSDCOUNT"
+
 echo "NFS Server running.."
-exec /usr/sbin/rpc.mountd "$RPCMOUNTDOPTS"
+/usr/sbin/rpc.mountd "$RPCMOUNTDOPTS"
+
+sleep infinity
