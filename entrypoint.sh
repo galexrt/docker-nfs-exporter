@@ -9,8 +9,6 @@ for share in $NFS_EXPORTS; do
     echo "$share" >> /etc/exports
 done
 
-modprobe nfsd || { echo "Failed modprobing 'nfsd' kernel module"; exit 1; }
-
 echo "Initializing NFS Server.."
 rpcbind
 /usr/sbin/rpc.nfsd "$RPCNFSDOPTS" "$RPCNFSDCOUNT"

@@ -4,6 +4,7 @@ metadata:
   name: nfs-exporter-1-pv-claim
   labels:
     app: nfs-exporter
+    number: "1"
 spec:
   accessModes:
     - ReadWriteOnce
