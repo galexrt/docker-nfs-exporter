@@ -5,6 +5,7 @@ ENV TINI_VERSION="v0.15.0" NFS_EXPORTS=""
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 
 RUN apt-get -qq update && \
+    apt-get -q upgrade -y && \
     apt-get install -y nfs-kernel-server && \
     chmod +x /tini && \
     rm -rf /var/lib/apt/lists/* && \
