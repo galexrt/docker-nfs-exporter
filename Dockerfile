@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 LABEL maintainer="Alexander Trost <galexrt@googlemail.com>"
 
-ENV TINI_VERSION="v0.15.0" NFS_EXPORTS=""
+ENV TINI_VERSION="v0.17.0" NFS_EXPORTS=""
 
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 
